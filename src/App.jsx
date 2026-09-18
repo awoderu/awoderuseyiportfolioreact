@@ -1,8 +1,5 @@
 import Navbar from "./components/Navbar";
 import Home from "./pages/home";
-import Hero from "./components/Hero";
-import ProjectPage from "./pages/projects/projectpage";
-import SubHeading from "../../components/subHeading";
 // import Footer from "./components/Footer";
 import './index.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
