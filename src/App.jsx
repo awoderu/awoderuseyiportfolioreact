@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import Home from "./pages/home.jsx";
+import Home from "../pages/Home.jsx";
 import Hero from "./components/Hero";
 // import ProjectPage from "./pages/projectpage.jsx";
 // import Footer from "./components/Footer";
