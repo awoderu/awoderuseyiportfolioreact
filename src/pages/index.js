@@ -11,5 +11,5 @@ export {
   FooterOverlay,
   MenuItem,
   Navbar,
-  ProjectPage,
+  ProjectPage,  
 };
