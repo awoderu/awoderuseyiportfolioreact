@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar";
-import Home from "../pages/Home.jsx";
-import Hero from "./components/Hero";
+import Home from "./pages/home";
+// import Hero from "./components/Hero";
 // import ProjectPage from "./pages/projectpage.jsx";
 // import Footer from "./components/Footer";
 // import './index.css';
