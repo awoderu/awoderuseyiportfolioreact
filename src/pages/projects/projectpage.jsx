@@ -1,6 +1,6 @@
 import React from 'react'
 import "./projectpage.css"
-import SubHeading from "../../components/SubHeading";
+import SubHeading from "../../components/subHeading";
 import { BsInstagram, BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
 import { images } from '../../constants';
 
