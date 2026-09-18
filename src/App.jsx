@@ -1,9 +1,10 @@
 import Navbar from "./components/Navbar";
 import Home from "./pages/home";
-// import Hero from "./components/Hero";
-// import ProjectPage from "./pages/projectpage.jsx";
+import Hero from "./components/Hero";
+import ProjectPage from "./pages/projects/projectpage";
+import SubHeading from "./components/SubHeading";
 // import Footer from "./components/Footer";
-// import './index.css';
+import './index.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 
@@ -14,6 +15,7 @@ function App() {
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
+              {/* <Route path="/projectpage" element={<ProjectPage />} /> */}
               {/* <Route path="/hero" element={<Hero />} /> */}
             </Routes>
           </Router>
