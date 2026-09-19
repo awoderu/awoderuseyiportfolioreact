@@ -21,7 +21,7 @@ import award05 from '../assets/award05.png';
 import sign from '../assets/sign.png';
 import quote from '../assets/quote.png';
 import gericht from '../assets/gericht.png';
-import appleweb from '../assets/appleweb.png';
+import appleweb from '../assets/applewebapp.png';
 
 export default {
   bg,

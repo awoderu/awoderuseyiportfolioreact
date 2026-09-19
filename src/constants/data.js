@@ -93,7 +93,7 @@ const gallery = [
   },
   {
     image: images.appleweb,
-    title: 'Fine Dining',
+    title: '3D Apple website',
     link: 'https://3dapplewebappclone-2y91b2rdc-acme-ecf0.vercel.app/',
   },
   {
