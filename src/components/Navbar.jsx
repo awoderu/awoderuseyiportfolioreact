@@ -21,8 +21,10 @@ const Navbar = () => {
     }, []);
 
   return (
-    <nav className="fixed top-0 w-full z-50 transition-all duration-300 bg-red-500 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-0 w-full lg:w-full z-50 transition-all
+     duration-300 bg-red-500 backdrop-blur-sm justify-between ">
+      {/* extend nav bar old value - max-w-7xl */}
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 " >
         <div className="flex justify-between items-center h-14 sm:h-16 md:h-20 relative">
            <Link to="/#hero" className="flex items-center space-x-1 group cursor-pointer">
             {/* <div>
@@ -60,12 +62,12 @@ const Navbar = () => {
         <div className="md:hidden bg-black backdrop-blur-lg  border-slate-800 text-white font-mono">
           <div className="px-4 py-4 sm:py-6 space-y-3 sm:space-y-4">
             <a href="/" onClick={() => setMobilemenuisOpen(false)} className="block  hover:text-white text-sm lg:text-base">
-              Services
+              Home
             </a>
             <a href="/projectpage" onClick={() => setMobilemenuisOpen(false)} className="block  hover:text-white text-sm lg:text-base">
               Projects
             </a>
-            <Link to="/contact" onClick={() => setMobilemenuisOpen(false)} className="block hover:text-white text-sm lg:text-base">
+            <Link to="/#contact" onClick={() => setMobilemenuisOpen(false)} className="block hover:text-white text-sm lg:text-base">
               Contact
             </Link>
           </div>

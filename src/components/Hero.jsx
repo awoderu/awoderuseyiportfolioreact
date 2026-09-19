@@ -27,34 +27,38 @@ const Hero = () => {
 
 
   return (
-      <section id='hero' className="min-h-screen  relative flex  px-4 sm:px-6 lg:px-8 pt-19 lg:pt-20
-       sm:pt-28 xl:pt-25 pb-8 sm:pb-8 bg-black ">
+      <section id='hero' className="min-h-screen relative flex 
+       px-4 sm:px-6 lg:px-8 pt-19 lg:pt-20 xl:pt-25 pb-8 sm:pb-8 bg-black ">
        
-        
-            <div className="relative w-full max-w-5xl mx-auto">
-              <div className="flex flex-col lg:grid lg:grid-cols-[3fr_4.2fr] gap-6 sm:gap-6 lg:gap-6
-               items-center text-center lg:text-left pt-10 ">
+              {/* change left spacing here max-w-5xl */}
+            <div className="relative w-full  mx-auto p-10 lg:pt-20 pl-10">
+
+
+              {/* Both elements */}
+              <div className="flex flex-col lg:grid lg:grid-cols-[3fr_4.2fr] gap-2 sm:gap-6 lg:gap-6 xl:gap-20
+               items-center text-center lg:text-left">
                
 
                   {/* Profile image */}
-                    <div className="flex justify-center lg:justify-start mb-6 lg:mb-0 p-10 px-6  ">
+                    <div className="flex mb-6 lg:mb-0 items-center lg:pl-10  ">
                       <img  src={profile} alt="Profile" 
                       className="h-[65vw] w-[65vw] cursor-pointer rounded-full shadow-[0_0_18px_0_#adff2f] 
-                      hover:shadow-[0_0_25px_red] sm:h-[28vw] sm:w-[28vw] 
-                       transition-[all] duration-[400ms] ease-out animate-floatImage"/>
-                    </div>
+                      hover:shadow-[0_0_25px_red] sm:h-[40vw] sm:w-[40vw] md:h-[25vw] md:w-[25vw] 
+                      transition-[all] duration-[400ms] ease-out animate-floatImage"/>
+                      </div>
                     
                     {/* Introduction section */}
 
-                <div className="ml-0 w-full text-white flex flex-col items-center font-mono tracking-tight ">
+                <div className="ml-0 w-full text-white flex flex-col 
+                items-center sm:items-start lg:items-start font-mono tracking-tight lg:pr-45">
                     <div>
                       
-                      <h3 className="text-xl sm:text-2xl font-semibold mb-2 text-white">Hello, I am</h3>
+                      <h3 className="text-xl sm:text-2xl font-semibold mb-2 text-white wh">Hello, I am</h3>
                     </div>
 
                     
-                    <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold mb-3 sm:mb-4">
-                      <span className="text-white block mb-0.5 sm:mb-1 font-bold whitespace-nowrap">
+                    <h1 className="text-3xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold mb-3 sm:mb-4">
+                      <span className="text-white block mb-0.5 sm:mb-1 font-bold whitespace-nowrap ">
                         Oluwaseyi Awoderu
                       </span>
                     </h1>
