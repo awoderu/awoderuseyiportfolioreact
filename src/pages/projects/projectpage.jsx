@@ -8,6 +8,7 @@ import data from '../../constants/data';
 
 
 
+
 const ProjectPage = () => {
   const scrollRef = React.useRef(null);
 

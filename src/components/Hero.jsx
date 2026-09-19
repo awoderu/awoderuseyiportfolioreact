@@ -27,7 +27,7 @@ const Hero = () => {
 
 
   return (
-      <section className="min-h-screen  relative flex  px-4 sm:px-6 lg:px-8 pt-19 lg:pt-20
+      <section id='hero' className="min-h-screen  relative flex  px-4 sm:px-6 lg:px-8 pt-19 lg:pt-20
        sm:pt-28 xl:pt-25 pb-8 sm:pb-8 bg-black ">
        
         
@@ -39,14 +39,14 @@ const Hero = () => {
                   {/* Profile image */}
                     <div className="flex justify-center lg:justify-start mb-6 lg:mb-0 p-10 px-6  ">
                       <img  src={profile} alt="Profile" 
-                      className="h-[28vw] w-[28vw] cursor-pointer rounded-full shadow-[0_0_18px_0_#adff2f] 
-                      hover:shadow-[0_0_25px_red]
+                      className="h-[65vw] w-[65vw] cursor-pointer rounded-full shadow-[0_0_18px_0_#adff2f] 
+                      hover:shadow-[0_0_25px_red] sm:h-[28vw] sm:w-[28vw] 
                        transition-[all] duration-[400ms] ease-out animate-floatImage"/>
                     </div>
                     
                     {/* Introduction section */}
 
-                <div className="ml-0 w-full text-white flex flex-col items-start font-mono tracking-tight ">
+                <div className="ml-0 w-full text-white flex flex-col items-center font-mono tracking-tight ">
                     <div>
                       
                       <h3 className="text-xl sm:text-2xl font-semibold mb-2 text-white">Hello, I am</h3>
