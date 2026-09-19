@@ -2,9 +2,6 @@ import { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 import React from 'react';
 import profile from "../assets/profile.jpg";
-import { MapPin, Calendar, ArrowRight, Phone } from "lucide-react";
-import Balls from "./Balls";
-import { Facebook } from '@mui/icons-material';
 
 const Hero = () => {
 
