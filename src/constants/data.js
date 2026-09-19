@@ -92,8 +92,9 @@ const gallery = [
     link: 'https://luxuryrestuarant.vercel.app/',
   },
   {
-    image: images.gallery02,
+    image: images.appleweb,
     title: 'Fine Dining',
+    link: 'https://3dapplewebappclone-2y91b2rdc-acme-ecf0.vercel.app/',
   },
   {
     image: images.gallery04,

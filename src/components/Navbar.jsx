@@ -41,7 +41,7 @@ const Navbar = () => {
 
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8 font-mono text-black">
             <a href="/" className=" hover:text-green-500 text-sm lg:text-base ">Home</a>
-            <a href="/projectpage" className=" hover:text-green-500 text-sm lg:text-base">Projects</a>
+            <a href="/projectpage" className="hover:text-green-500 text-sm lg:text-base">Projects</a>
             {/* <a href="/home#contact" className=" hover:text-green-500 text-sm lg:text-base">Contact</a> */}
             <Link to="/#contact" className="hover:text-green-500 text-sm lg:text-base">Contact</Link>
             {/* <Link to="#contact" className="hover:text-green-500 text-sm lg:text-base">Contact</Link> */}

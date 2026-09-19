@@ -4,6 +4,7 @@ import SubHeading from "../../components/subHeading";
 import { BsInstagram, BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
 import { images } from '../../constants';
 import data from '../../constants/data';
+import { BrowserRouter as Router, Route, Routes,Link } from "react-router-dom";
 
 
 

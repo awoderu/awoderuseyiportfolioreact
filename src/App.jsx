@@ -3,7 +3,7 @@ import Home from "./pages/home";
 import ProjectPage from "./pages/projects/projectpage";
 // import Footer from "./components/Footer";
 import './index.css';
-import { BrowserRouter as Router, Route, Routes,Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import ScrollToHash from "./components/ScrollToHash";
 
 

@@ -62,7 +62,7 @@ const Form = () => {
               
               
               
-              <button className='bg-linear-to-r/srgb from-indigo-500 to-blue-500
+              <button className='bg-red-500
                text-white font-medium py-2 px-4 rounded-md hover:bg-white 
                align-center transition ease-in duration-200'>
                    Send me a mesage
