@@ -29,7 +29,7 @@ const Hero = () => {
   return (
       <section className="min-h-screen  relative flex  px-4 sm:px-6 lg:px-8 pt-19 lg:pt-20
        sm:pt-28 xl:pt-25 pb-8 sm:pb-8 bg-black ">
-        <Balls />
+       
         
             <div className="relative w-full max-w-5xl mx-auto">
               <div className="flex flex-col lg:grid lg:grid-cols-[3fr_4.2fr] gap-6 sm:gap-6 lg:gap-6

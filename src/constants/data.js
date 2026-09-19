@@ -1,5 +1,6 @@
 import images from './images';
 
+
 const wines = [
   {
     title: 'Chapel Hill Shiraz',
@@ -79,4 +80,34 @@ const awards = [
   },
 ];
 
-export default { wines, cocktails, awards };
+const gallery = [
+  {
+    image: images.gallery05,
+    title: 'DLAB MEDICARE RESPONSIVE WEBSITE',
+    link: 'https://dlabmed.vercel.app/',
+  },
+  {
+    image: images.gallery03,
+    title: 'LUXURY RESTURAUNT RESPONSIVE SITE',
+    link: 'https://luxuryrestuarant.vercel.app/',
+  },
+  {
+    image: images.gallery02,
+    title: 'Fine Dining',
+  },
+  {
+    image: images.gallery04,
+    title: 'Special Events',
+  },
+  {
+    image: images.gallery01,
+    title: 'Our Kitchen',
+  },
+];
+
+
+export default { wines, cocktails, awards, gallery };
+
+
+
+
