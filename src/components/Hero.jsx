@@ -80,8 +80,8 @@ const Hero = () => {
                    hover:text-green-400 hover:scale-[1.02]  active:scale-[2] 
                    focus-visible:scale-[1.02]" />
                 <FaBehance className="text-3xl text-red-500 rounded-full border-4 border-red-500" />
-                <FaGithub className="text-3xl text-red-500 rounded-full border-4 border-green-500" />
-                <FaInstagram className="text-3xl text-red-500 rounded-full border-4 border-green-500" />
+                <FaGithub className="text-4xl text-red-500 rounded-full border-4 border-green-500" />
+                <FaInstagram className="text-4xl text-red-500 rounded-full border-4 border-green-500" />
                 </div>
                 
                   
