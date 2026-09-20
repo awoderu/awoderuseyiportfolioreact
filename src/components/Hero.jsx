@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 import React from 'react';
 import profile from "../assets/profile.jpg";
-
+import { FaFacebook, FaLinkedin, FaBehance, FaGithub, FaInstagram } from "react-icons/fa";
 const Hero = () => {
 
   const multiple_text = useRef(null);
@@ -26,7 +26,7 @@ const Hero = () => {
 
   return (
       <section id='hero' className="min-h-screen relative flex 
-       px-4 sm:px-6 lg:px-8 pt-19 lg:pt-20 xl:pt-25 pb-8 sm:pb-8 bg-black ">
+       px-4 sm:px-6 lg:px-8 pt-19 lg:pt-20 xl:pt-25 pb-8 sm:pb-8 bg-black pt-16 ">
        
               {/* change left spacing here max-w-5xl */}
             <div className="relative w-full  mx-auto p-10 lg:pt-20 pl-10">
@@ -70,14 +70,20 @@ const Hero = () => {
                       <code className="bg-gray-200 text-gray-800 rounded px-1 py-0.5"> — focused on delivering high-quality user experiences.</code>
                     </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4">
-                <div>
-                  
-                    <a href="https://www.linkedin.com/in/oluwaseyi-awoderu-2b3b65184/"><i class="fa-brands fa-square-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-square-behance"></i></a>
-                    <a href="https://github.com/awoderu"><i class="fa fa-github"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <div className="grid  flex-col sm:flex-row items-center justify-center 
+              lg:justify-start gap-3 sm:gap-4 space-y-4">
+                <div className="flex space-x-4    p-2">
+                
+                <FaLinkedin className="text-3xl text-red-500  border-green-500
+                   text-green-100 border-2 hover:border-red-500 shadow-[0_0_15px_rgba(34,197,94,0.6)] 
+                   transition-all duration-300 hover:bg-black 
+                   hover:text-green-400 hover:scale-[1.02]  active:scale-[2] 
+                   focus-visible:scale-[1.02]" />
+                <FaBehance className="text-3xl text-red-500 rounded-full border-4 border-red-500" />
+                <FaGithub className="text-3xl text-red-500 rounded-full border-4 border-green-500" />
+                <FaInstagram className="text-3xl text-red-500 rounded-full border-4 border-green-500" />
                 </div>
+                
                   
                   <a href="/form">
                   <button className="group w-full sm:w-auto px-6 sm:px-8 py-1 sm:py-4 bg-red-500
