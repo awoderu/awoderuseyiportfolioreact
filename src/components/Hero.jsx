@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 import React from 'react';
 import profile from "../assets/profile.jpg";
-import { FaFacebook, FaLinkedin, FaBehance, FaGithub, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaLinkedin, FaBehanceSquare, FaGithub, FaInstagram } from "react-icons/fa";
 const Hero = () => {
 
   const multiple_text = useRef(null);
@@ -10,7 +10,7 @@ const Hero = () => {
   useEffect(() => {
     if (multiple_text.current) {
       const typed = new Typed(multiple_text.current, {
-        strings: [ ' Web Developer',  'Web Designer'],
+        strings: [ 'Web Developer',  'Web Designer'],
         typeSpeed: 80,
         backSpeed: 80,
         color: '#adff2f',
@@ -47,7 +47,7 @@ const Hero = () => {
                     
                     {/* Introduction section */}
 
-                <div className="ml-0 w-full text-white flex flex-col 
+                <div className="inline-block w-[230px] ml-0 w-full text-white flex flex-col 
                 items-center sm:items-start lg:items-start font-mono tracking-tight lg:pr-45">
                     <div>
                       
@@ -55,14 +55,14 @@ const Hero = () => {
                     </div>
 
                     
-                    <h1 className="text-3xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold mb-3 sm:mb-4">
+                    <h1 className="text-3xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold mb-3 sm:mb-4 whitespace-nowrap">
                       <span className="text-white block mb-0.5 sm:mb-1 font-bold whitespace-nowrap ">
                         Oluwaseyi Awoderu
                       </span>
                     </h1>
 
                     
-                    <h3 className="text-2xl sm:text-4xl font-bold mb-3">and im a <span className="text-red-500" ref={multiple_text}>Web Developer</span>
+                    <h3 className="inline-block text-2xl sm:text-4xl font-bold mb-3 whitespace-nowrap">and im a <span className="text-red-500 " ref={multiple_text}>Web Developer</span>
                     </h3>
 
                     <p className="text-md sm:text-base lg:text-lg  max-w-2xl mx-auto lg:mx-0 mb-4 sm:mb-5 leading-relaxed max-w-200px">
@@ -78,10 +78,10 @@ const Hero = () => {
                    text-green-100 border-2 hover:border-red-500 shadow-[0_0_15px_rgba(34,197,94,0.6)] 
                    transition-all duration-300 hover:bg-black 
                    hover:text-green-400 hover:scale-[1.02]  active:scale-[2] 
-                   focus-visible:scale-[1.02]" />
-                <FaBehance className="text-3xl text-red-500 rounded-full border-4 border-red-500" />
-                <FaGithub className="text-4xl text-red-500 rounded-full border-4 border-green-500" />
-                <FaInstagram className="text-4xl text-red-500 rounded-full border-4 border-green-500" />
+                   focus-visible:scale-[1.s02]" />
+                <FaBehanceSquare className="text-xl text-red-500 rounded-full border-1 p-1 border-red-500" size={40} />
+                <FaGithub className="text-4xl text-red-500 rounded-full border border-green-500" size={40} />
+                <FaInstagram className="text-4xl text-red-500 rounded-full border-4 border-green-500" size={40} />
                 </div>
                 
                   
