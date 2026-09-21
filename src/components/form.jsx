@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Form = () => {
   return (
      <>
@@ -8,7 +9,7 @@ const Form = () => {
             <h2 className="text-[28px] text-white mb-6 text-center">
                   Send me a message
          </h2>
-          <form className='flex flex-col font-Rubik' action="https://formspree.io/f/xbglgzaw" method="POST">
+          <form className='flex flex-col font-Rubik' action="https://formspree.io/f/xbglgzaw" name='' method="POST">
             <div className='flex space-x-4 mb-4'>
               <input placeholder='First Name' className='bg-white text-olive-950 rounded-xl p-2 w-1/2 focus:bg-slate-100 focus:outline-none transition ease-in-out duration-150 placeholder-black' type='text'>
               
