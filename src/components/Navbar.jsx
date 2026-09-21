@@ -64,7 +64,7 @@ const Navbar = () => {
             <a href="/" onClick={() => setMobilemenuisOpen(false)} className="block  hover:text-white text-sm lg:text-base">
               Home
             </a>
-            <a href="/projectpage" onClick={() => setMobilemenuisOpen(false)} className="block  hover:text-white text-sm lg:text-base">
+            <a href="/#projectpage" onClick={() => setMobilemenuisOpen(false)} className="block  hover:text-white text-sm lg:text-base">
               Projects
             </a>
             <Link to="/#contact" onClick={() => setMobilemenuisOpen(false)} className="block hover:text-white text-sm lg:text-base">
