@@ -56,7 +56,7 @@
 
 .gallery__image-icon {
     position: fixed;
-    color: #fff;
+    color: greenyellow;
     font-size: 2rem;
     opacity: 0;
     transition: .5s ease;
@@ -77,11 +77,17 @@
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #fff;
+  font-weight: 700;
+  
+  font-family:monospace;
+  word-wrap: break-word;
   z-index: 2;
   text-align: center;
   white-space: nowrap;
+  color: greenyellow; /* Initial text color */
+  transition: color 0.3s ease;
 }
+
 
 
 .app__gallery-images_card img {
@@ -96,10 +102,16 @@
 
 .app__gallery-images_card:hover img {
     opacity: .35;
+
+}
+
+.app__gallery-images_card:hover .gallery__image-title {
+  color: black; /* Replace with your desired hover color */
 }
 
 .app__gallery-images_card:hover .gallery__image-icon {
     opacity: 1;
+    color:black;
 }
 
 .app__gallery-images_arrows {
@@ -175,4 +187,12 @@
         min-width: 300px;
         height: 400px;
     }
+}
+
+.app__gallery-images_card img[src*="cswebapp"] {
+  max-width: 60%; /* Adjust this value until you like the size */
+  height: auto;   /* Keeps the image proportional */
+  margin-top: 110px; /* Adjust this value as needed */
+  align-self: center;
+  justify-self: center;
 }

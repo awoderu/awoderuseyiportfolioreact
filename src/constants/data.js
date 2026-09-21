@@ -97,12 +97,14 @@ const gallery = [
     link: 'https://3dapplewebappclone-2y91b2rdc-acme-ecf0.vercel.app/',
   },
   {
-    image: images.gallery04,
-    title: 'Special Events',
+    image: images.cswebapp,
+    title: 'CRYSTAL STUDIOS STORE',
+    link: 'https://crystalstudioswebsite.vercel.app/',
   },
   {
-    image: images.gallery01,
-    title: 'Our Kitchen',
+    image: images.qrcode,
+    title: 'QR CODE GENERATOR',
+    link: 'https://ourkitchenwebsite.vercel.app/',
   },
 ];
 

@@ -6,6 +6,7 @@ import gallery02 from '../assets/gallery02.png';
 import gallery03 from '../assets/gallery03.png';
 import gallery04 from '../assets/gallery04.png';
 import gallery05 from '../assets/gallery05.jpg';  
+import cswebapp from '../assets/cswebapp.png';
 
 // import logo from '../assets/logo.png';
 // import menu from '../assets/menu.png';
@@ -22,6 +23,7 @@ import sign from '../assets/sign.png';
 import quote from '../assets/quote.png';
 // import gericht from '../assets/gericht.png';
 import appleweb from '../assets/applewebapp.png';
+import qrcode from '../assets/qrcode.png';
 
 export default {
   bg,
@@ -32,6 +34,7 @@ export default {
   gallery03,
   gallery04,
   gallery05,
+  cswebapp,
   // knife,
   // logo,
   // menu,
@@ -48,4 +51,5 @@ export default {
   quote,
   // gericht,
   appleweb,
+  qrcode,
 };
