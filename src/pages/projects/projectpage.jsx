@@ -62,7 +62,7 @@ const ProjectPage = () => {
   return (
     <>
     {/* app__gallery flex__center  */}
-       <div className=" w-h-screen bg-white text-red-500 pt-8">
+       <div className=" w-h-screen bg-white text-red-500 pt-8" id='projectpage'>
       <div className="app__gallery-content w-h-screen sm:w-h-screen">
     
         <h3 className="headtext__cormorant text-5xl pb-20 pt-20 sm:pt-10 

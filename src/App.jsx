@@ -15,7 +15,7 @@ function App() {
             <ScrollToHash />
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/project" element={<Project />} />
+              {/* <Route path="/projectpage" element={<Project />} /> */}
               {/* <Route path="/Project" element={<Project />} /> */}
               {/* <Route path="/hero" element={<Hero />} /> */}
             </Routes>
