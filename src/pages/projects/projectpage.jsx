@@ -1,10 +1,7 @@
 import React from 'react'
 import "./projectpage.css"
-import SubHeading from "../../components/subHeading";
-import { BsInstagram, BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
-import { images } from '../../constants';
+import { BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
 import data from '../../constants/data';
-import { BrowserRouter as Router, Route, Routes,Link } from "react-router-dom";
 
 
 
@@ -20,7 +17,11 @@ const ProjectPage = () => {
   React.useEffect(() => {
     const { current } = scrollRef;
     if (current) {
-      current.scrollLeft = current.scrollWidth / 3;
+      const frame = requestAnimationFrame(() => {
+        current.scrollLeft = Math.round(current.scrollWidth / 3);
+      });
+
+      return () => cancelAnimationFrame(frame);
     }
   }, []);
 
@@ -30,12 +31,12 @@ const ProjectPage = () => {
     if (!current) return;
 
     const segmentWidth = current.scrollWidth / 3;
+    const maxScrollLeft = current.scrollWidth - current.clientWidth;
 
-    // Buffer checks prevent visual stuttering at extreme boundaries
-    if (current.scrollLeft < 10) {
-      current.scrollLeft = segmentWidth;
-    } else if (current.scrollLeft >= (segmentWidth * 2) - 10) {
-      current.scrollLeft = segmentWidth - 10;
+    if (current.scrollLeft <= 0) {
+      current.scrollLeft = Math.round(segmentWidth);
+    } else if (current.scrollLeft >= maxScrollLeft) {
+      current.scrollLeft = Math.round(segmentWidth);
     }
   };
 

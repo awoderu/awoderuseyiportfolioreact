@@ -7,6 +7,7 @@ import gallery03 from '../assets/gallery03.png';
 import gallery04 from '../assets/gallery04.png';
 import gallery05 from '../assets/gallery05.jpg';  
 import cswebapp from '../assets/cswebapp.png';
+import image from '../assets/image.png';
 
 // import logo from '../assets/logo.png';
 // import menu from '../assets/menu.png';
@@ -52,4 +53,5 @@ export default {
   // gericht,
   appleweb,
   qrcode,
+  image,
 };

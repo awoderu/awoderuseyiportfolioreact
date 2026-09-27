@@ -48,7 +48,7 @@ const Navbar = () => {
              <img src={ccr_logo} className="w-20 h-20 sm:w-28 sm:h-28 sm:pt-4" alt="portfolio" />
            </Link>
             <a href="/" className=" hover:text-green-500 text-sm lg:text-base ">Home</a>
-            <a href="/project" className="hover:text-green-500 text-sm lg:text-base">Projects</a>
+            <a href="/Project" className="hover:text-green-500 text-sm lg:text-base">Projects</a>
             {/* <a href="/home#contact" className=" hover:text-green-500 text-sm lg:text-base">Contact</a> */}
             <Link to="/#contact" className="hover:text-green-500 text-sm lg:text-base">Contact</Link>
             {/* <Link to="#contact" className="hover:text-green-500 text-sm lg:text-base">Contact</Link> */}
@@ -71,7 +71,7 @@ const Navbar = () => {
             <a href="/" onClick={() => setMobilemenuisOpen(false)} className="block  hover:text-white text-sm lg:text-base">
               Home
             </a>
-            <a href="/projectgallery" onClick={() => setMobilemenuisOpen(false)} className="block  hover:text-white text-sm lg:text-base">
+            <a href="/Project" onClick={() => setMobilemenuisOpen(false)} className="block  hover:text-white text-sm lg:text-base">
               Projects
             </a>
             <Link to="/#contact" onClick={() => setMobilemenuisOpen(false)} className="block hover:text-white text-sm lg:text-base">
