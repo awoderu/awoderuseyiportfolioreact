@@ -171,3 +171,24 @@ Using a custom attribute for variability
   transform-origin: 25vw -3vh;
   box-shadow: 40vmin 0 5.196265905749415vmin currentColor;
 } 
+
+.social-media a{
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width:42px;
+        height:42px;
+        background: transparent;
+        border: 2px solid red;
+        border-radius: 50%;
+        font-size: 3rem;
+        color: none;
+        margin: 3rem 1.5rem 3rem 0;
+        transition: 0.3s ease;
+}
+
+.social-media a:hover{
+        transform: scale(1.2) translateY(-10px) ;
+        background-color: black;
+        box-shadow: 0 0 25px green;
+}

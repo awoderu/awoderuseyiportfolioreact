@@ -1,6 +1,9 @@
 import Navbar from "./components/Navbar";
 import Home from "./pages/home";
-import Project from "./components/Project";
+import ProjectPage from "./pages/projects/projectpage";
+import ProjectGallery from "./components/Project";
+// import Project from "./components/Project";
+// import Cube from "./pages/cube";
 // import Footer from "./components/Footer";
 import './index.css';
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
@@ -15,7 +18,9 @@ function App() {
             <ScrollToHash />
             <Routes>
               <Route path="/" element={<Home />} />
-              {/* <Route path="/projectpage" element={<Project />} /> */}
+              {/* <Route path="/cube" element={<Cube />} /> */}
+              <Route path="/project" element={<ProjectGallery />} />
+              <Route path="/ProjectPage" element={<ProjectPage />} />
               {/* <Route path="/Project" element={<Project />} /> */}
               {/* <Route path="/hero" element={<Hero />} /> */}
             </Routes>

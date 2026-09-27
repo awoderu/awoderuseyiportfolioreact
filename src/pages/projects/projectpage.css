@@ -32,7 +32,8 @@
 .app__gallery-images_container {
     display: flex;
     flex-direction: row;
-    width: max-content;
+    width: 100%;
+    min-width: 0;
     /* overflow-x: scroll; */
     -ms-overflow-style: none;
     scrollbar-width: none;  
@@ -40,6 +41,7 @@
     overflow-x: auto;
     white-space: nowrap;
     scroll-behavior: auto;
+    touch-action: pan-x;
 }
 
 .app__gallery-images_container::-webkit-scrollbar {

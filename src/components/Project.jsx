@@ -1,14 +1,117 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes,Link } from "react-router-dom";
+import React from 'react'
+import "../pages/projects/projectpage.css"
+import { BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
+import data from '../constants/data';
 
 
 
-const Project = () => {
+
+
+const ProjectGallery = () => {
+  const scrollRef = React.useRef(null);
+
+  // 1. Triplicate the gallery array data to create the infinite looping runway
+  const infiniteGallery = [...data.gallery, ...data.gallery, ...data.gallery];
+
+  // 2. Instantly jump to the center segment when the component loads
+  React.useEffect(() => {
+    const { current } = scrollRef;
+    if (current) {
+      const frame = requestAnimationFrame(() => {
+        current.scrollLeft = Math.round(current.scrollWidth / 3);
+      });
+
+      return () => cancelAnimationFrame(frame);
+    }
+  }, []);
+
+  // 3. Keep track of boundaries and instantly snap back to the center track segment
+  const handleScrollReset = () => {
+    const { current } = scrollRef;
+    if (!current) return;
+
+    const segmentWidth = current.scrollWidth / 3;
+
+    const maxScrollLeft = current.scrollWidth - current.clientWidth;
+
+    if (current.scrollLeft <= 0) {
+      current.scrollLeft = Math.round(segmentWidth);
+    } else if (current.scrollLeft >= maxScrollLeft) {
+      current.scrollLeft = Math.round(segmentWidth);
+    }
+  };
+
+  // 4. Smooth movement function for your Arrow Icon click triggers
+  const scroll = (direction) => {
+    const { current } = scrollRef;
+    if (!current) return;
+
+    if (direction === 'left') {
+      current.scrollTo({
+        left: current.scrollLeft - 300,
+        behavior: 'smooth'
+      });
+    } else {
+      current.scrollTo({
+        left: current.scrollLeft + 300,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+
+
   return (
-    <div id="project">
+    <>
+    {/* app__gallery flex__center  */}
+       <div className=" w-h-screen bg-white text-red-500 pt-8" id='project'>
+      <div className="app__gallery-content w-h-screen sm:w-h-screen">
     
-    </div>
-  );
-};
+        <h3 className="headtext__cormorant text-5xl pb-20 pt-20 sm:pt-10 
+        sm:pb-20  lg:pt-15 lg:pb-0 font-mono">MY PROJECTS</h3>
+      </div>
+      <div className="app__gallery-images">
+        <div 
+        className="app__gallery-images_container" 
+        ref={scrollRef}
+        onScroll={handleScrollReset}
+      >
+        {infiniteGallery.map((gallery, index) => {
+          // Dynamic inner card block content
+          const cardContent = (
+            <div className="app__gallery-images_card flex__center">
+              <img src={gallery.image} alt="gallery_image" />
+              <h1 className="gallery__image-title">{gallery.title}</h1>
+            </div>
+          );
 
-export default Project;
+          // Render link wrappers ONLY if the item has a valid link array property
+          return gallery.link ? (
+            <a 
+              href={gallery.link} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              key={`${gallery.title}-${index}`}
+            >
+              {cardContent}
+            </a>
+          ) : (
+            <div key={`${gallery.title}-${index}`}>
+              {cardContent}
+            </div>
+          );
+        })}
+      </div>
+
+        <div className="app__gallery-images_arrows">
+          <BsArrowLeftShort className="gallery__arrow-icon" onClick={() => scroll('left')} />
+          <BsArrowRightShort className="gallery__arrow-icon" onClick={() => scroll('right')} />
+        </div>
+      </div>
+    </div>
+    
+    </>
+  )
+}
+
+export default ProjectGallery

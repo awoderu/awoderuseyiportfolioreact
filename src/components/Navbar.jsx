@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import dlab_logo from "../assets/dlab_logo.png";
+import ccr_logo from "../assets/ccr_logo.png";
 import { Link } from "react-router-dom";
 import '../index.css';
 import { Menu, X } from "lucide-react";
@@ -30,7 +31,9 @@ const Navbar = () => {
             {/* <div>
               <img src={dlab_logo} className="w-6 h-6 sm:w-8 sm:h-8" alt="portfolio" />
             </div> */}
-            <span className=" flex flex-col text-lg sm:text-xl md:text-2xl font-extrabold font-mono text-black">
+            <span className=" flex flex-col text-lg sm:text-xl md:text-2xl font-extrabold font-mono text-black
+            transform scale-100 
+                      hover:scale-[1.08] transition-transform duration-300 origin-left">
               <span className="#">Oluwaseyi </span>
               <span className="#">Awoderu</span>
               {/* <span className="block text-[10px] text-left leading-none text-gray-400">
@@ -40,8 +43,12 @@ const Navbar = () => {
           </Link>
 
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8 font-mono text-black">
+            {/* <img src={dlab_logo} className="w-6 h-6 sm:w-8 sm:h-8" alt="portfolio" /> */}
+           <Link to="cube" className="flex items-center space-x-1 group cursor-pointer">
+             <img src={ccr_logo} className="w-20 h-20 sm:w-28 sm:h-28 sm:pt-4" alt="portfolio" />
+           </Link>
             <a href="/" className=" hover:text-green-500 text-sm lg:text-base ">Home</a>
-            <a href="/#projectpage" className="hover:text-green-500 text-sm lg:text-base">Projects</a>
+            <a href="/project" className="hover:text-green-500 text-sm lg:text-base">Projects</a>
             {/* <a href="/home#contact" className=" hover:text-green-500 text-sm lg:text-base">Contact</a> */}
             <Link to="/#contact" className="hover:text-green-500 text-sm lg:text-base">Contact</Link>
             {/* <Link to="#contact" className="hover:text-green-500 text-sm lg:text-base">Contact</Link> */}
@@ -64,7 +71,7 @@ const Navbar = () => {
             <a href="/" onClick={() => setMobilemenuisOpen(false)} className="block  hover:text-white text-sm lg:text-base">
               Home
             </a>
-            <a href="/#projectpage" onClick={() => setMobilemenuisOpen(false)} className="block  hover:text-white text-sm lg:text-base">
+            <a href="/projectgallery" onClick={() => setMobilemenuisOpen(false)} className="block  hover:text-white text-sm lg:text-base">
               Projects
             </a>
             <Link to="/#contact" onClick={() => setMobilemenuisOpen(false)} className="block hover:text-white text-sm lg:text-base">

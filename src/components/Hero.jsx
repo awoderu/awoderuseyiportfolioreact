@@ -26,10 +26,10 @@ const Hero = () => {
 
   return (
       <section id='hero' className="min-h-screen relative flex 
-       px-4 sm:px-6 lg:px-8 pt-19 lg:pt-20 xl:pt-25 pb-8 sm:pb-8 bg-black pt-16 ">
+       px-4 sm:px-6 lg:px-8 pt-19 lg:pt-20 xl:pt-55 pb-8 sm:pb-8 bg-black pt-16 ">
        
               {/* change left spacing here max-w-5xl */}
-            <div className="relative w-full  mx-auto p-10 lg:pt-20 pl-10">
+            <div className="relative w-full  mx-auto p-10 lg:pt-18 pl-10">
 
 
               {/* Both elements */}
@@ -38,7 +38,7 @@ const Hero = () => {
                
 
                   {/* Profile image */}
-                    <div className="flex mb-6 lg:mb-0 items-center lg:pl-10  ">
+                    <div className="flex mb-6 lg:mb-0 items-center lg:pl-20">
                       <img  src={profile} alt="Profile" 
                       className="h-[65vw] w-[65vw] cursor-pointer rounded-full shadow-[0_0_18px_0_#adff2f] 
                       hover:shadow-[0_0_25px_red] sm:h-[40vw] sm:w-[40vw] md:h-[25vw] md:w-[25vw] 
@@ -47,7 +47,7 @@ const Hero = () => {
                     
                     {/* Introduction section */}
 
-                <div className="inline-block w-[230px] ml-0 w-full text-white flex flex-col 
+                <div className="inline-block w-[230px]  ml-0 w-full text-white flex flex-col 
                 items-center sm:items-start lg:items-start font-mono tracking-tight lg:pr-45">
                     <div>
                       
@@ -70,27 +70,23 @@ const Hero = () => {
                       <code className="bg-gray-200 text-gray-800 rounded px-1 py-0.5"> — focused on delivering high-quality user experiences.</code>
                     </p>
 
-              <div className="grid  flex-col sm:flex-row items-center justify-center 
+              <div className="grid  flex-col sm:flex-row  justify-center 
               lg:justify-start gap-3 sm:gap-4 space-y-4">
-                <div className="flex space-x-4    p-2">
+                <div className="flex space-x-5 leading-tight social-icons">
                 
-                <FaLinkedin className="text-3xl text-red-500  border-green-500
-                   text-green-100 border-2 hover:border-red-500 shadow-[0_0_15px_rgba(34,197,94,0.6)] 
-                   transition-all duration-300 hover:bg-black 
-                   hover:text-green-400 hover:scale-[1.02]  active:scale-[2] 
-                   focus-visible:scale-[1.s02]" />
-                <FaBehanceSquare className="text-xl text-red-500 rounded-full border-1 p-1 border-red-500" size={40} />
-                <FaGithub className="text-4xl text-red-500 rounded-full border border-green-500" size={40} />
-                <FaInstagram className="text-4xl text-red-500 rounded-full border-4 border-green-500" size={40} />
+                <FaLinkedin className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-red-500 p-2 text-2xl text-red-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-120 transition-transform duration-300" />
+                <FaBehanceSquare className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-red-500 p-2 text-2xl text-red-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-120 transition-transform duration-300" />
+                <FaGithub className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-red-500 p-2 text-2xl text-red-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-120 transition-transform duration-300" />
+                <FaInstagram className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-red-500 p-2 text-2xl text-red-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-120 transition-transform duration-300" />
                 </div>
                 
                   
                   <a href="/form">
-                  <button className="group w-full sm:w-auto px-6 sm:px-8 py-1 sm:py-4 bg-red-500
-                   text-green-100 backdrop-blur-sm border-4 border-red-500 hover:border-red-500 shadow-[0_0_15px_rgba(34,197,94,0.6)] 
-                   rounded-full font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-black 
-                   hover:text-green-400 hover:scale-[1.02] active:bg-white active:text-blue-950 active:scale-[1.02] 
-                   focus-visible:scale-[1.02] flex items-center justify-center space-x-2">
+                  <button className="group sm:w-auto px-6 sm:px-8  sm:py-4 bg-red-500
+                   text-black  backdrop-blur-sm border-4 border-red-500 hover:border-red-500 shadow-[0_0_15px_rgba(34,197,94,0.6)] 
+                   rounded-full font-bold sm:text-base transition-all duration-300 hover:bg-black 
+                   hover:text-green-400 hover:scale-[1.2] active:bg-white active:text-blue-950 active:scale-[1.02] 
+                   focus-visible:scale-[1.02] flex items-center justify-center">
                     
                         <div className="flex items-center space-x-2">
                           <span>Download CV</span>

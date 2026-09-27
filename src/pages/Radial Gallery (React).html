@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Radial Gallery</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<style>
+  :root{ --bg:#01012A; --fg:#33def4; --line:#03E2E7; --accent:#FE296D; --panel:#0a0a3d;
+    padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  :root:not([data-theme="light"]){ --bg:#01012A; --fg:#33def4; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ overscroll-behavior:none; overflow:hidden; height:100%;
+    font-family: Montserrat, 'Segoe UI', sans-serif; background:var(--bg); color:var(--fg); }
+  canvas{ display:block; position:fixed; top:0; left:0; width:100%; height:100%; background:var(--bg); }
+  .loading{ z-index:9999; background:var(--bg); color:var(--fg); text-align:center; position:fixed; inset:0;
+    display:flex; justify-content:center; align-items:center;
+    transition: opacity .8s .5s cubic-bezier(.755,.05,.855,.06), visibility .8s .5s; }
+  .loading.loaded{ opacity:0; visibility:hidden; }
+  .loading-container{ width:40%; min-width:180px; }
+  .counter{ padding:.8rem; font-size:1.1rem; letter-spacing:2px; }
+  .line{ background:var(--line); width:0%; height:2px; margin-top:8px; }
+  .add-btn{ position:fixed; right: calc(20px + env(safe-area-inset-right,0px)); top: calc(20px + env(safe-area-inset-top,0px));
+    z-index:50; background:var(--panel); color:var(--fg); border:1px solid var(--fg);
+    padding:10px 16px; border-radius:24px; font-family:inherit; font-size:.85rem; letter-spacing:1px; cursor:pointer; }
+  .add-btn:hover{ background:var(--fg); color:var(--bg); }
+  .backdrop{ position:fixed; inset:0; background:rgba(1,1,42,.75); z-index:100;
+    display:flex; align-items:center; justify-content:center; }
+  .modal{ background:var(--panel); border:1px solid var(--fg); border-radius:12px; padding:24px;
+    width:min(360px, 88vw); color:var(--fg); }
+  .modal h2{ font-size:1rem; margin-bottom:16px; letter-spacing:1px; font-weight:400; }
+  .modal label{ display:block; font-size:.75rem; opacity:.7; margin-bottom:4px; }
+  .modal input[type=text]{ width:100%; background:transparent; border:1px solid var(--fg); color:var(--fg);
+    padding:8px 10px; border-radius:6px; font-family:inherit; margin-bottom:14px; }
+  .modal input[type=file]{ width:100%; margin-bottom:14px; font-size:.8rem; color:var(--fg); }
+  .modal-actions{ display:flex; gap:10px; justify-content:flex-end; }
+  .modal-actions button{ font-family:inherit; font-size:.8rem; padding:8px 14px; border-radius:6px; cursor:pointer;
+    border:1px solid var(--fg); background:transparent; color:var(--fg); }
+  .modal-actions button.primary{ background:var(--fg); color:var(--bg); }
+  .modal-actions button[disabled]{ opacity:.4; cursor:not-allowed; }
+  .hint{ position:fixed; left:50%; transform:translateX(-50%); bottom: calc(20px + env(safe-area-inset-bottom,0px));
+    font-size:.7rem; opacity:.5; letter-spacing:1px; pointer-events:none; text-align:center; width:90%; }
+  .toolbar{ position:fixed; left:50%; bottom: calc(28px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%);
+    z-index:60; background:var(--panel); border:1px solid var(--fg); border-radius:24px;
+    padding:8px 10px 8px 18px; display:flex; align-items:center; gap:10px; }
+  .toolbar span{ font-size:.85rem; max-width:40vw; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .toolbar button{ font-family:inherit; font-size:.75rem; padding:6px 12px; border-radius:16px; cursor:pointer;
+    border:1px solid var(--fg); background:transparent; color:var(--fg); }
+  .toolbar button.danger{ border-color:var(--accent); color:var(--accent); }
+  .toolbar button:hover{ background:var(--fg); color:var(--bg); }
+  .toolbar button.danger:hover{ background:var(--accent); color:#fff; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+"use strict";
+const {useState, useRef, useEffect, useCallback} = React;
+const h = React.createElement;
+const rand=(a,b)=>a+Math.random()*(b-a);
+const randInt=(a,b)=>Math.floor(a+Math.random()*(b-a+1));
+
+function imageToSquareTile(img, size){
+  const c=document.createElement('canvas'); c.width=c.height=size;
+  const ctx=c.getContext('2d');
+  const side=Math.min(img.width,img.height);
+  const sx=(img.width-side)/2, sy=(img.height-side)/2;
+  ctx.drawImage(img, sx, sy, side, side, 0, 0, size, size);
+  return c;
+}
+
+class Glitch{
+  constructor(ctx,w,h){ this.ctx=ctx; this.w=w; this.h=h; }
+  draw(t){
+    const ctx=this.ctx,h=this.h,w=this.w; let y=0;
+    while(y<h){
+      const sliceH=Math.min(randInt(6,26), h-y);
+      if(sliceH<=0) break;
+      const img=ctx.getImageData(0,y,w,sliceH); // per-slice height (fixes the overflow bug from the original)
+      if(Math.random()>0.015){ ctx.putImageData(img, Math.tan(y*0.1+t)*8*Math.random(), y); }
+      else{ ctx.putImageData(img, w*Math.random()-w/2, y); }
+      y+=sliceH;
+    }
+  }
+}
+
+const TILE_SIZE=220;
+
+class Sketch{
+  constructor(canvas, {onFocusChange}={}){
+    this.canvas=canvas; this.ctx=canvas.getContext('2d');
+    this.delta={x:0,y:0}; this.mouse={x:0,y:0};
+    this.focused=null; this.focusAnim=0;
+    this.shapes=[]; this.nextId=1;
+    this.onFocusChange=onFocusChange||(()=>{});
+    this.setSize();
+    this.glitch=new Glitch(this.ctx,this.width,this.height);
+    this.bind();
+    this.raf=requestAnimationFrame(this.render.bind(this));
+  }
+  setSize(){
+    this.width=this.canvas.width=window.innerWidth;
+    this.height=this.canvas.height=window.innerHeight;
+    this.radius=Math.max(this.width,this.height)*0.55;
+  }
+  addTile(tileCanvas, title){
+    const id=this.nextId++;
+    this.shapes.push({ id, xr:rand(0,Math.PI*2), yr:rand(0,Math.PI*2), tile:tileCanvas, size:TILE_SIZE, title:title||'Untitled' });
+    return id;
+  }
+  updateTile(id, {tile, title}){
+    const s=this.shapes.find(s=>s.id===id);
+    if(!s) return;
+    if(tile) s.tile=tile;
+    if(title!==undefined) s.title=title;
+  }
+  removeTile(id){
+    this.shapes=this.shapes.filter(s=>s.id!==id);
+    if(this.focused && this.focused.id===id){ this.focused=null; this.onFocusChange(null); }
+  }
+  setFocus(shape){
+    this.focused=shape;
+    this.onFocusChange(shape ? {id:shape.id, title:shape.title} : null);
+  }
+  bind(){
+    window.addEventListener('resize', ()=>{ this.setSize(); this.glitch.w=this.width; this.glitch.h=this.height; });
+    window.addEventListener('wheel', e=>{ this.delta.x+=e.deltaX*0.0005; this.delta.y+=e.deltaY*0.0005; }, {passive:true});
+    window.addEventListener('mousemove', e=>{ this.mouse.x=e.clientX-this.width/2; this.mouse.y=e.clientY-this.height/2; });
+    let ts=null;
+    window.addEventListener('touchstart', e=>{ const t=e.touches[0]; ts={x:t.pageX,y:t.pageY}; }, {passive:true});
+    window.addEventListener('touchmove', e=>{
+      const t=e.touches[0];
+      this.mouse.x=t.pageX-this.width/2; this.mouse.y=t.pageY-this.height/2;
+      if(ts){ this.delta.x+=(ts.x-t.pageX)*0.0003; this.delta.y+=(ts.y-t.pageY)*0.0003; ts={x:t.pageX,y:t.pageY}; }
+    }, {passive:true});
+    window.addEventListener('click', e=>{
+      if(e.target.closest('.add-btn, .backdrop, .toolbar')) return;
+      if(this.focused){ this.setFocus(null); return; }
+      const x=e.clientX-this.width/2, y=e.clientY-this.height/2;
+      for(const s of this.shapes){
+        if(!s.visible) continue;
+        if(Math.abs(x-s.x)<s.size*s.ratio/2 && Math.abs(y-s.y)<s.size*s.ratio/2){ this.setFocus(s); break; }
+      }
+    });
+  }
+  update(s){
+    s.x=Math.sin(s.xr+this.delta.x)*this.radius;
+    s.y=Math.cos(s.yr+this.delta.y)*this.radius;
+    const d=Math.min(Math.sqrt(s.x*s.x+s.y*s.y)/this.radius,1);
+    s.ratio=1-Math.pow(d,3);
+    s.visible=!(Math.sin(s.yr+this.delta.y)>0 || Math.cos(s.xr+this.delta.x)>0);
+  }
+  render(t){
+    const ctx=this.ctx;
+    ctx.clearRect(0,0,this.width,this.height);
+    ctx.save(); ctx.translate(this.width/2,this.height/2);
+    let hovered=null;
+    for(const s of this.shapes){
+      this.update(s);
+      if(!s.visible) continue;
+      ctx.save(); ctx.globalAlpha=s.ratio; ctx.translate(s.x,s.y); ctx.scale(s.ratio,s.ratio);
+      ctx.drawImage(s.tile,-s.size/2,-s.size/2,s.size,s.size);
+      ctx.restore();
+      if(Math.abs(this.mouse.x-s.x)<s.size*s.ratio/2 && Math.abs(this.mouse.y-s.y)<s.size*s.ratio/2) hovered=s;
+    }
+    document.body.style.cursor = hovered ? 'pointer' : 'default';
+    if(hovered){
+      ctx.save(); ctx.strokeStyle='#FE296D'; ctx.lineWidth=3;
+      ctx.strokeRect(hovered.x-hovered.size*hovered.ratio/2, hovered.y-hovered.size*hovered.ratio/2, hovered.size*hovered.ratio, hovered.size*hovered.ratio);
+      ctx.restore();
+    }
+    if(Math.random()<0.006) this.glitch.draw(t*0.001);
+    if(this.focused && this.shapes.includes(this.focused)){
+      this.focusAnim=Math.min(this.focusAnim+0.08,1);
+      const s=this.focused, size=TILE_SIZE*(0.4+1.6*this.focusAnim);
+      ctx.save();
+      ctx.globalAlpha=0.55*this.focusAnim; ctx.fillStyle='#000'; ctx.fillRect(-this.width/2,-this.height/2,this.width,this.height);
+      ctx.globalAlpha=this.focusAnim; ctx.drawImage(s.tile,-size/2,-size/2,size,size);
+      ctx.restore();
+    } else { this.focusAnim=Math.max(this.focusAnim-0.08,0); }
+    ctx.restore();
+    this.raf=requestAnimationFrame(this.render.bind(this));
+  }
+  destroy(){ cancelAnimationFrame(this.raf); }
+}
+
+/* ---------- React UI ---------- */
+function ImageModal({mode, initialTitle, fileRequired, onSubmit, onClose}){
+  const [title,setTitle]=useState(initialTitle||'');
+  const [file,setFile]=useState(null);
+  const canSubmit = fileRequired ? !!file : true;
+  return h('div',{className:'backdrop', onClick:onClose},
+    h('div',{className:'modal', onClick:e=>e.stopPropagation()},
+      h('h2',null, mode==='edit' ? 'Edit image' : 'Add image'),
+      h('label',null,'Title'),
+      h('input',{type:'text', value:title, onChange:e=>setTitle(e.target.value), placeholder:'Untitled'}),
+      h('label',null, mode==='edit' ? 'Replace photo (optional)' : 'Image file'),
+      h('input',{type:'file', accept:'image/*', onChange:e=>setFile(e.target.files[0]||null)}),
+      h('div',{className:'modal-actions'},
+        h('button',{onClick:onClose},'Cancel'),
+        h('button',{className:'primary', disabled:!canSubmit, onClick:()=>onSubmit(file,title)}, mode==='edit' ? 'Save' : 'Add')
+      )
+    )
+  );
+}
+
+function App(){
+  const canvasRef=useRef(null);
+  const sketchRef=useRef(null);
+  const [loaded,setLoaded]=useState(false);
+  const [pct,setPct]=useState(0);
+  const [modal,setModal]=useState(null); // null | {mode:'add'} | {mode:'edit', id, title}
+  const [focused,setFocused]=useState(null); // {id,title} | null
+  const [count,setCount]=useState(0);
+
+  useEffect(()=>{
+    document.documentElement.style.setProperty('--vh',(window.innerHeight*0.01)+'px');
+    const onResize=()=>document.documentElement.style.setProperty('--vh',(window.innerHeight*0.01)+'px');
+    window.addEventListener('resize', onResize);
+    const start=performance.now(), DURATION=650;
+    let raf;
+    function step(t){
+      const p=Math.min(1,(t-start)/DURATION);
+      setPct(Math.floor(p*100));
+      if(p<1){ raf=requestAnimationFrame(step); }
+      else{
+        setTimeout(()=>{
+          setLoaded(true);
+          sketchRef.current = new Sketch(canvasRef.current, {onFocusChange:setFocused});
+        }, 200);
+      }
+    }
+    raf=requestAnimationFrame(step);
+    return ()=>{ cancelAnimationFrame(raf); window.removeEventListener('resize', onResize); if(sketchRef.current) sketchRef.current.destroy(); };
+  },[]);
+
+  const fileToTile=(file)=>new Promise(resolve=>{
+    const reader=new FileReader();
+    reader.onload=()=>{
+      const img=new Image();
+      img.onload=()=>resolve(imageToSquareTile(img, TILE_SIZE));
+      img.src=reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+
+  const handleAdd=useCallback(async (file,title)=>{
+    const tile=await fileToTile(file);
+    sketchRef.current.addTile(tile, title.trim()||'Untitled');
+    setCount(c=>c+1);
+    setModal(null);
+  },[]);
+
+  const handleEditSave=useCallback(async (file,title)=>{
+    const id=modal.id;
+    const tile = file ? await fileToTile(file) : undefined;
+    sketchRef.current.updateTile(id, {tile, title: title.trim()||'Untitled'});
+    setFocused(f=>f && f.id===id ? {id, title:title.trim()||'Untitled'} : f);
+    setModal(null);
+  },[modal]);
+
+  const handleDelete=useCallback(()=>{
+    if(!focused) return;
+    sketchRef.current.removeTile(focused.id);
+    setCount(c=>Math.max(0,c-1));
+  },[focused]);
+
+  return h(React.Fragment,null,
+    h('canvas',{ref:canvasRef}),
+    h('div',{className:'loading'+(loaded?' loaded':'')},
+      h('div',{className:'loading-container'},
+        h('p',{className:'counter'}, pct+'%'),
+        h('div',{className:'line', style:{width:pct+'%'}})
+      )
+    ),
+    loaded && h('button',{className:'add-btn', onClick:()=>setModal({mode:'add'})}, '+ Add image'),
+    loaded && !focused && h('p',{className:'hint'},
+      count===0 ? 'Gallery is empty — click "+ Add image" to start' : 'drag / scroll to pan · click a tile to focus'),
+    loaded && focused && h('div',{className:'toolbar'},
+      h('span',null, focused.title),
+      h('button',{onClick:()=>setModal({mode:'edit', id:focused.id, title:focused.title})}, 'Edit'),
+      h('button',{className:'danger', onClick:handleDelete}, 'Delete')
+    ),
+    modal && h(ImageModal,{
+      mode:modal.mode,
+      initialTitle: modal.mode==='edit' ? modal.title : '',
+      fileRequired: modal.mode==='add',
+      onSubmit: modal.mode==='edit' ? handleEditSave : handleAdd,
+      onClose: ()=>setModal(null)
+    })
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>
