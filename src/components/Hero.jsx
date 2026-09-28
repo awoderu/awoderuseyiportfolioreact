@@ -75,7 +75,7 @@ const Hero = () => {
                 <div className="flex space-x-5 leading-tight social-icons">
                 
                 <a href="https://www.linkedin.com/in/oluwaseyi-awoderu-2b3b65184/"><FaLinkedin  className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-red-500 p-2 text-2xl text-red-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-120 transition-transform duration-300" /></a>
-                <a href="https://www.behance.net/seyiawoderu"><FaBehanceSquare className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-red-500 p-2 text-2xl text-red-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-120 transition-transform duration-300" /></a>
+                <a href="https://www.behance.net/gallery/249908085/Portfolio-2026"><FaBehanceSquare className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-red-500 p-2 text-2xl text-red-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-120 transition-transform duration-300" /></a>
                <a href="https://github.com/awoderu"><FaGithub className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-red-500 p-2 text-2xl text-red-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-120 transition-transform duration-300" /></a>
                  <a href="tel:08030579725"><FaPhone className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-red-500 p-2 text-2xl text-red-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-120 transition-transform duration-300" /></a>
                 </div>
