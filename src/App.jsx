@@ -1,7 +1,8 @@
 import Navbar from "./components/Navbar";
+import Footer from "./components/footer";
 import Home from "./pages/home";
 import ProjectPage from "./pages/projects/projectpage";
-import ProjectGallery from "./components/Project";
+import ProjectGallery from "./pages/projects/Project";
 // import Project from "./components/Project";
 // import Cube from "./pages/cube";
 // import Footer from "./components/Footer";
@@ -24,6 +25,7 @@ function App() {
               {/* <Route path="/Project" element={<Project />} /> */}
               {/* <Route path="/hero" element={<Hero />} /> */}
             </Routes>
+            <Footer />
           </Router>
       </div>
   

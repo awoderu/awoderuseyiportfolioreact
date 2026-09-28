@@ -4,4 +4,13 @@ import data from './data';
 
 
 
-export { images, meal, data };
+export { images, meal, data, footerLinks };
+
+
+const footerLinks = [
+    { label: "Privacy Policy", link: "#" },
+    { label: "Terms of Use", link: "#" },
+    { label: "Sales Policy", link: "#" },
+    { label: "Legal", link: "#" },
+    { label: "Site Map", link: "#" },
+];

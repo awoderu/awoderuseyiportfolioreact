@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 import React from 'react';
 import profile from "../assets/profile.jpg";
-import { FaFacebook, FaLinkedin, FaBehanceSquare, FaGithub, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaLinkedin, FaBehanceSquare, FaGithub, FaPhone } from "react-icons/fa";
 const Hero = () => {
 
   const multiple_text = useRef(null);
@@ -74,10 +74,10 @@ const Hero = () => {
               lg:justify-start gap-3 sm:gap-4 space-y-4">
                 <div className="flex space-x-5 leading-tight social-icons">
                 
-                <FaLinkedin className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-red-500 p-2 text-2xl text-red-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-120 transition-transform duration-300" />
-                <FaBehanceSquare className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-red-500 p-2 text-2xl text-red-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-120 transition-transform duration-300" />
-                <FaGithub className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-red-500 p-2 text-2xl text-red-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-120 transition-transform duration-300" />
-                <FaInstagram className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-red-500 p-2 text-2xl text-red-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-120 transition-transform duration-300" />
+                <a href="https://www.linkedin.com/in/oluwaseyi-awoderu-2b3b65184/"><FaLinkedin  className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-red-500 p-2 text-2xl text-red-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-120 transition-transform duration-300" /></a>
+                <a href="https://www.behance.net/seyiawoderu"><FaBehanceSquare className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-red-500 p-2 text-2xl text-red-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-120 transition-transform duration-300" /></a>
+               <a href="https://github.com/awoderu"><FaGithub className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-red-500 p-2 text-2xl text-red-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-120 transition-transform duration-300" /></a>
+                 <a href="tel:08030579725"><FaPhone className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-red-500 p-2 text-2xl text-red-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-120 transition-transform duration-300" /></a>
                 </div>
                 
                   
