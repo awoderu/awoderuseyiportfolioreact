@@ -25,6 +25,7 @@ import quote from '../assets/quote.png';
 // import gericht from '../assets/gericht.png';
 import appleweb from '../assets/applewebapp.png';
 import qrcode from '../assets/qrcode.png';
+import project2 from '../assets/project_img_2.png';
 
 export default {
   bg,
@@ -54,4 +55,5 @@ export default {
   appleweb,
   qrcode,
   image,
+  project2,
 };

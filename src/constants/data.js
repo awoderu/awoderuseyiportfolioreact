@@ -55,6 +55,11 @@ const gallery = [
     title: 'MODERN WEBSITE WITH REACT AND TAILWIND',
     link: 'https://modern-website-drab-beta.vercel.app/',
   },
+  {
+    image: images.project2,
+    title: 'REAL ESTATE WEBSITE WITH REACT,TAILWIND AND\n FRAMER MOTION',
+    link: 'https://oliyass-properties-real-estate-webs.vercel.app/',
+  },
 ];
 
 
