@@ -57,7 +57,7 @@ const gallery = [
   },
   {
     image: images.project2,
-    title: 'REAL ESTATE WEBSITE WITH REACT,TAILWIND AND\n FRAMER MOTION',
+    title: 'WEBSITE WITH REACT,TAILWIND AND\n FRAMER MOTION',
     link: 'https://oliyass-properties-real-estate-webs.vercel.app/',
   },
 ];

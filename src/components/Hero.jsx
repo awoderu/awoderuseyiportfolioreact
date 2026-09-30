@@ -81,7 +81,7 @@ const Hero = () => {
                 </div>
                 
                   
-                  <a href="/form">
+                  <a href="./assets/Seyi-Awoderu-CV-IT.pdf" download="Seyi_Awoderu_CV.pdf">
                   <button className="group sm:w-auto px-6 sm:px-8  sm:py-4 bg-red-500
                    text-black  backdrop-blur-sm border-4 border-red-500 hover:border-red-500 shadow-[0_0_15px_rgba(34,197,94,0.6)] 
                    rounded-full font-bold sm:text-base transition-all duration-300 hover:bg-black 
