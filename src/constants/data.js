@@ -60,6 +60,11 @@ const gallery = [
     title: 'WEBSITE WITH REACT,TAILWIND AND\n FRAMER MOTION',
     link: 'https://oliyass-properties-real-estate-webs.vercel.app/',
   },
+  {
+    image: images.CC_cover1,
+    title: 'NEXT JS BLOG PAGE',
+    link: 'https://next-blog-app-beta-gules.vercel.app/',
+  }
 ];
 
 

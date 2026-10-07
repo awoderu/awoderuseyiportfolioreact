@@ -26,6 +26,7 @@ import quote from '../assets/quote.png';
 import appleweb from '../assets/applewebapp.png';
 import qrcode from '../assets/qrcode.png';
 import project2 from '../assets/project_img_2.jpg';
+import CC_cover1 from '../assets/cc-cover1.png';
 
 export default {
   bg,
@@ -56,4 +57,5 @@ export default {
   qrcode,
   image,
   project2,
+  CC_cover1,
 };
