@@ -1,113 +1,44 @@
 import React from 'react'
 import "./projectpage.css"
-import { BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
 import data from '../../constants/data';
+
+const { gallery } = data;
 
 
 
 
 
 const ProjectGallery = () => {
-  const scrollRef = React.useRef(null);
-
-  // 1. Triplicate the gallery array data to create the infinite looping runway
-  const infiniteGallery = [...data.gallery, ...data.gallery, ...data.gallery];
-
-  // 2. Instantly jump to the center segment when the component loads
-  React.useEffect(() => {
-    const { current } = scrollRef;
-    if (current) {
-      const frame = requestAnimationFrame(() => {
-        current.scrollLeft = Math.round(current.scrollWidth / 3);
-      });
-
-      return () => cancelAnimationFrame(frame);
-    }
-  }, []);
-
-  // 3. Keep track of boundaries and instantly snap back to the center track segment
-  const handleScrollReset = () => {
-    const { current } = scrollRef;
-    if (!current) return;
-
-    const segmentWidth = current.scrollWidth / 3;
-
-    const maxScrollLeft = current.scrollWidth - current.clientWidth;
-
-    if (current.scrollLeft <= 0) {
-      current.scrollLeft = Math.round(segmentWidth);
-    } else if (current.scrollLeft >= maxScrollLeft) {
-      current.scrollLeft = Math.round(segmentWidth);
-    }
-  };
-
-  // 4. Smooth movement function for your Arrow Icon click triggers
-  const scroll = (direction) => {
-    const { current } = scrollRef;
-    if (!current) return;
-
-    if (direction === 'left') {
-      current.scrollTo({
-        left: current.scrollLeft - 300,
-        behavior: 'smooth'
-      });
-    } else {
-      current.scrollTo({
-        left: current.scrollLeft + 300,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-
 
   return (
     <>
     {/* app__gallery flex__center  */}
-       <div className=" w-h-screen bg-white text-red-500 pt-8" id='project'>
+       <div className=" w-h-screen bg-white text-red-500 pt-8 sm:justify-items-center" id='project'>
       <div className="app__gallery-content w-h-screen sm:w-h-screen">
     
         <h3 className="headtext__cormorant text-5xl pb-20 pt-20 sm:pt-10 
         sm:pb-20  lg:pt-15 lg:pb-15 font-mono">MY PROJECTS</h3>
       </div>
-      <div className="app__gallery-images">
-        <div 
-        className="app__gallery-images_container" 
-        ref={scrollRef}
-        onScroll={handleScrollReset}
-      >
-        {infiniteGallery.map((gallery, index) => {
-          // Dynamic inner card block content
-          const cardContent = (
-            <div className="app__gallery-images_card flex__center">
-              <img src={gallery.image} alt="gallery_image" />
-              <h1 className="gallery__image-title">{gallery.title}</h1>
+      <div className="max-w-8xl grid grid-cols-1 gap-5 items-center       sm:grid-cols-2 sm:justify-items-center lg:flex lg:flex-wrap lg:justify-center p-5 text-center mb-6 sm:mb-8">
+              {gallery.map((project, index) => (
+                <a
+                  key={index}
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <article className="w-85 sm:w-72 lg:w-60 flex flex-col p-4 border border-gray-200 rounded-lg hover:bg-white/10 hover:border-red-500">
+                    <div className='filter saturate-0 hover:saturate-100 transition duration-300'>
+                      <img src={project.image} alt={project.title} className="w-full h-40 object-cover" />
+                    </div>
+                    <div className='text-black text-center mt-4'>
+                      <h3 className="team__name whitespace-pre-line">{project.title}</h3>
+                    </div>
+                  </article>
+                </a>
+              ))}
             </div>
-          );
-
-          // Render link wrappers ONLY if the item has a valid link array property
-          return gallery.link ? (
-            <a 
-              href={gallery.link} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              key={`${gallery.title}-${index}`}
-            >
-              {cardContent}
-            </a>
-          ) : (
-            <div key={`${gallery.title}-${index}`}>
-              {cardContent}
-            </div>
-          );
-        })}
-      </div>
-
-        <div className="app__gallery-images_arrows">
-          <BsArrowLeftShort className="gallery__arrow-icon" onClick={() => scroll('left')} />
-          <BsArrowRightShort className="gallery__arrow-icon" onClick={() => scroll('right')} />
-        </div>
-      </div>
     </div>
     
     </>
